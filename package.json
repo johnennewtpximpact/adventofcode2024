@@ -10,6 +10,7 @@
     "build": "npx tsc",
     "1": "npx tsc && node dist/1.js",
     "2": "npx tsc && node dist/2.js",
+    "3": "npx tsc && node dist/3.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
