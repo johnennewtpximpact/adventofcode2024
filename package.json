@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "figlet": "^1.8.0"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "1": "npx tsc && node dist/1.js",
+    "2": "npx tsc && node dist/2.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
