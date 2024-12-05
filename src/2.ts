@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 const figlet = require("figlet");
 
-const text = readFileSync('./src/reports.txt', 'utf-8');
+const text = readFileSync('./src/day2.txt', 'utf-8');
 const reports = text.split("\n");
 
 let isIncreasing = (levels: number[]): boolean => {

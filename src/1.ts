@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 const figlet = require("figlet");
 
-const text = readFileSync('./src/list.txt', 'utf-8');
+const text = readFileSync('./src/day1.txt', 'utf-8');
 const textByLine = text.split("\n");
 
 let extractor = (line: string, index: number) => {
