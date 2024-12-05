@@ -12,6 +12,7 @@
     "2": "npx tsc && node dist/2.js",
     "3": "npx tsc && node dist/3.js",
     "4": "npx tsc && node dist/4.js",
+    "5": "npx tsc && node dist/5.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

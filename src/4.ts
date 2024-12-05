@@ -45,6 +45,7 @@ const x_masCount = (() => {
 	for (let i = 1; i < searchgrid.length - 1; i++) {
 		for (let j = 1; j < searchgrid[0].length - 1; j++) {
 			if (searchgrid[i][j] === 'A') {
+				// Check both diagonals from this A.
 				const diag1 = [searchgrid[i-1][j-1], searchgrid[i+1][j+1]];
 				const diag2 = [searchgrid[i+1][j-1], searchgrid[i-1][j+1]];
 				if (diag1.includes('M') && diag1.includes('S') && diag2.includes('M') && diag2.includes('S')) {
