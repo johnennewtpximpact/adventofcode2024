@@ -1,18 +1,23 @@
 {
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.10.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
   "dependencies": {
     "figlet": "^1.8.0"
   },
   "scripts": {
-    "build": "npx tsc",
     "1": "npx tsc && node dist/1.js",
     "2": "npx tsc && node dist/2.js",
     "3": "npx tsc && node dist/3.js",
     "4": "npx tsc && node dist/4.js",
     "5": "npx tsc && node dist/5.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "6": "npx tsc && node --stack-size=8196 dist/6.js",
+    "build": "npx tsc",
+    "test": "jest"
   }
 }

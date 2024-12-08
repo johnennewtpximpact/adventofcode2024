@@ -7,7 +7,7 @@ const textByLine = text.split("\n");
 let extractor = (line: string, index: number) => {
   const values = line.split("   ");
   if (values.length === 2) {
-	const num = parseFloat(values[index]); 
+	const num = parseFloat(values[index]);
   	if (!isNaN(num)) {
 		return num;
   	}
