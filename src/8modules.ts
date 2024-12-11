@@ -15,13 +15,55 @@ export type Cluster = {
   next: Cluster | null;
 }
 
+const _getResonantAntiNodes = (a: Antenna, b: Antenna, height: number, width: number): AntiNode[] => {
+    let x_dir = a.x - b.x;
+    let y_dir = a.y - b.y;
+
+    if (x_dir===0 && y_dir===0) throw new Error('same two points would create infinitie loop');
+
+    let x = a.x;
+    let y = a.y;
+    let resonantAntiNodes: AntiNode[] = [];
+
+    while (x >= 0 && x <= height && y >= 0 && y <= width) {
+     resonantAntiNodes.push({
+       x: x,
+       y: y,
+       next: null
+     });
+      x += x_dir;
+      y += y_dir;
+    }
+
+    x_dir *= -1;
+    y_dir *= -1;
+    x = a.x + x_dir;
+    y = a.y + y_dir;
+
+    while (x >= 0 && x <= height && y >= 0 && y <= width) {
+     resonantAntiNodes.push({
+       x: x,
+       y: y,
+       next: null
+     });
+      x += x_dir;
+      y += y_dir;
+    }
+
+    return resonantAntiNodes;
+}
+
 /**
  * Given any two nodes, work out where the anti nodes will be.
  *
  * Anti nodes appear on the line containing 2 nodes at points twice as far from one node
  * as the other.
  */
-export const getAntiNodes = (a: Antenna, b: Antenna, height: number = 11, width: number = 11): AntiNode[] => {
+export const getAntiNodes = (a: Antenna, b: Antenna, height: number = 11, width: number = 11, includeResonance: boolean = false): AntiNode[] => {
+  if (includeResonance) {
+    return _getResonantAntiNodes(a, b, height, width);
+  }
+
   const x_distance = Math.abs(a.x - b.x);
   const y_distance = Math.abs(a.y - b.y);
 
@@ -94,12 +136,12 @@ export const countLinkedList = (nodes: AntiNode | null): number => {
   return countLinkedList(nodes.next) + 1;
 }
 
-export const getAntiNodesFromCluster = (cluster: Cluster | null, height: number = 11, width: number = 11): AntiNode | null => {
+export const getAntiNodesFromCluster = (cluster: Cluster | null, height: number = 11, width: number = 11, includeResonance: boolean = false): AntiNode | null => {
   if (cluster === null) return null;
 
   const thisAntiNodes = cluster.antennas.reduce<AntiNode | null>((acc, curr, index, arr) => {
     for (let i = index + 1; i < arr.length; i++) {
-      const antiNodes = getAntiNodes(curr, arr[i], height, width);
+      const antiNodes = getAntiNodes(curr, arr[i], height, width, includeResonance);
       for (let j = 0; j < antiNodes.length; j++) {
         acc = addAntiNode(acc, antiNodes[j]);
       }
@@ -112,12 +154,18 @@ export const getAntiNodesFromCluster = (cluster: Cluster | null, height: number 
     return thisAntiNodes;
   }
 
-  return mergeAntiNodes(thisAntiNodes, getAntiNodesFromCluster(cluster.next, height, width));
+  return mergeAntiNodes(thisAntiNodes, getAntiNodesFromCluster(cluster.next, height, width, includeResonance));
 }
 
 export const countAntiNodes = (input: string, height: number = 11, width: number = 11): number => {
   const antennas = getAntennas(input);
   const antiNodes = getAntiNodesFromCluster(antennas, height, width);
+  return countLinkedList(antiNodes);
+}
+
+export const countResonantAntiNodes = (input: string, height: number = 11, width: number = 11): number => {
+  const antennas = getAntennas(input);
+  const antiNodes = getAntiNodesFromCluster(antennas, height, width, true);
   return countLinkedList(antiNodes);
 }
 

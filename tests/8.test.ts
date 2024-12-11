@@ -1,4 +1,4 @@
-import { getAntennas, getAntiNodes, addAntennaToCluster, getAntiNodesFromCluster, countAntiNodes } from '../src/8modules';
+import { countResonantAntiNodes, getAntennas, getAntiNodes, addAntennaToCluster, getAntiNodesFromCluster, countAntiNodes } from '../src/8modules';
 
 const exampleInput = `............
 ........0...
@@ -138,5 +138,17 @@ describe('getAntiNodesFromCluster function', () => {
 describe('countAntiNodes function', () => {
   test('Check the example counts correctly', () => {
     expect(countAntiNodes(exampleInput)).toEqual(14);
+  });
+});
+
+describe('getAntiNodes function with resonance', () => {
+  test('Check the interference points between two horizontal nodes', () => {
+    expect(getAntiNodes({ x: 0, y: 3 }, { x: 0, y: 5 }, 11, 11, true)).toEqual([{ x: 0, y: 3, next: null }, { x: 0, y: 1, next: null }, { x: 0, y: 5, next: null }, { x: 0, y: 7, next: null }, { x: 0, y: 9, next: null }, { x: 0, y: 11, next: null }]);
+  });
+});
+
+describe('countResonantAntiNodes function', () => {
+  test('Check the example counts correctly', () => {
+    expect(countResonantAntiNodes(exampleInput)).toEqual(34);
   });
 });
