@@ -21,6 +21,7 @@
     "8": "npx tsc && node dist/8.js",
     "9": "npx tsc && node dist/9.js",
     "10": "npx tsc && node dist/10.js",
+    "11": "npx tsc && node --stack-size=8196 dist/11.js",
     "build": "npx tsc",
     "test": "jest"
   }
