@@ -8,7 +8,9 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "figlet": "^1.8.0"
+    "figlet": "^1.8.0",
+    "huffman-javascript": "^0.1.2",
+    "huffman.js": "^0.2.0"
   },
   "scripts": {
     "1": "npx tsc && node dist/1.js",
