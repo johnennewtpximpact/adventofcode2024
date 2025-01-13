@@ -1,7 +1,3 @@
-import * as fs from 'fs';
-import * as os from 'os';
-import * as path from 'path';
-
 const cache = new Map<number, number[]>();
 
 export const blink = (val: number): number[] => {
@@ -43,8 +39,6 @@ export const countStones = (start: string, blinks: number): number => {
   const line = new Map<number, number>();
   start.trim().split(' ').forEach(v => line.set(parseInt(v), 1));
   const finalLine = blinkLines(line, blinks);
-
-  console.log(finalLine.size);
 
   let counter = 0;
   for (const [stone, count] of finalLine) {
