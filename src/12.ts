@@ -7,6 +7,6 @@ const plot = text.trim().split('\n').map(row => row.trim().split(''));
 
 const answer1 = getPrice(plot);
 const answer2 = getDiscountPrice(plot);
-console.log(figlet.textSync("Day 10"));
+console.log(figlet.textSync("Day 12"));
 console.log("Answer 1: " + answer1);
 console.log("Answer 2: " + answer2);
