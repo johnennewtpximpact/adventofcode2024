@@ -26,6 +26,7 @@
     "11": "npx tsc && node dist/11.js",
     "12": "npx tsc && node dist/12.js",
     "13": "npx tsc && node dist/13.js",
+    "14": "npx tsc && node dist/14.js",
     "build": "npx tsc",
     "test": "jest"
   }
