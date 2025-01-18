@@ -1,4 +1,4 @@
-import { explore, _scoreChangeByDirection, solve } from '../src/16modules';
+import { explore, solve } from '../src/16modules';
 
 const e1 = `
 #####
@@ -56,7 +56,7 @@ const e4 = `
 #...#...#...#..E#
 #.#.#.#.#.#.#.#.#
 #.#.#.#...#...#.#
-###.#.#.###.#.#.#
+#.#.#.#.###.#.#.#
 #...#.#.#.....#.#
 #.#.#.#.#.#####.#
 #.#...#.#.#.....#
@@ -72,53 +72,8 @@ const e4 = `
 
 const e4l = e4.trim().split('\n').map(l => l.split(''));
 
-describe('_scoreChangeByDirection', () => {
-
-  test('_scoreChangeByDirection E -> E', () => {
-    expect(_scoreChangeByDirection(-1, 0, -1, 0)).toEqual(0);
-  });
-  test('_scoreChangeByDirection E -> N', () => {
-    expect(_scoreChangeByDirection(-1, 0, 0, -1)).toEqual(1000);
-  });
-  test('_scoreChangeByDirection E -> S', () => {
-    expect(_scoreChangeByDirection(-1, 0, 0, 1)).toEqual(1000);
-  });
-
-  test('_scoreChangeByDirection N -> N', () => {
-    expect(_scoreChangeByDirection(0, -1, 0, -1)).toEqual(0);
-  });
-  test('_scoreChangeByDirection N -> W', () => {
-    expect(_scoreChangeByDirection(0, -1, 1, 0)).toEqual(1000);
-  });
-  test('_scoreChangeByDirection N -> E', () => {
-    expect(_scoreChangeByDirection(0, -1, -1, 0)).toEqual(1000);
-  });
-
-  test('_scoreChangeByDirection W -> W', () => {
-    expect(_scoreChangeByDirection(1, 0, 1, 0)).toEqual(0);
-  });
-  test('_scoreChangeByDirection W -> S', () => {
-    expect(_scoreChangeByDirection(1, 0, 0, 1)).toEqual(1000);
-  });
-  test('_scoreChangeByDirection W -> N', () => {
-    expect(_scoreChangeByDirection(1, 0, 0, -1)).toEqual(1000);
-  });
-
-  test('_scoreChangeByDirection S -> S', () => {
-    expect(_scoreChangeByDirection(0, 1, 0, 1)).toEqual(0);
-  });
-  test('_scoreChangeByDirection S -> E', () => {
-    expect(_scoreChangeByDirection(0, 1, -1, 0)).toEqual(1000);
-  });
-  test('_scoreChangeByDirection S -> W', () => {
-    expect(_scoreChangeByDirection(0, 1, 1, 0)).toEqual(1000);
-  });
-
-});
-
-
 describe('explore', () => {
-/*
+
   test('explore --> e1', () => {
     expect(explore(e1l)).toEqual(1005);
   });
@@ -134,13 +89,13 @@ describe('explore', () => {
   test('explore --> e3', () => {
     expect(explore(e3l)).toEqual(7036);
   });
-*/
+
   test('explore --> e4', () => {
     expect(explore(e4l)).toEqual(11048);
   });
 
 });
-/*
+
 describe('solve', () => {
 
   test('solve --> e1', () => {
@@ -158,4 +113,4 @@ describe('solve', () => {
   test('solve --> e4', () => {
     expect(solve(e4)).toEqual(11048);
   });
-});*/
+});
