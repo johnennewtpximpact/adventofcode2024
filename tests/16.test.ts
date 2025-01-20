@@ -1,4 +1,4 @@
-import { explore, solve } from '../src/16modules';
+import { explore, solve, solve2 } from '../src/16modules';
 
 const e1 = `
 #####
@@ -112,5 +112,24 @@ describe('solve', () => {
 
   test('solve --> e4', () => {
     expect(solve(e4)).toEqual(11048);
+  });
+});
+
+describe('solve2', () => {
+
+  test('solve2 --> e1', () => {
+    expect(solve2(e1)).toEqual(6);
+  });
+
+  test('solve2 --> e2', () => {
+    expect(solve2(e2)).toEqual(7);
+  });
+
+  test('solve2 --> e3', () => {
+    expect(solve2(e3)).toEqual(45);
+  });
+
+  test('solve2 --> e4', () => {
+    expect(solve2(e4)).toEqual(64);
   });
 });
